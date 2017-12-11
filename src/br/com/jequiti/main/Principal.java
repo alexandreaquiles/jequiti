@@ -1,10 +1,13 @@
 package br.com.jequiti.main;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import br.com.jequiti.dominio.Produto;
+import br.com.jequiti.dominio.filtro.FiltroDeProdutos;
+import br.com.jequiti.dominio.filtro.comparadores.ComparadorParaAmigoSecreto;
+import br.com.jequiti.dominio.filtro.comparadores.ComparadorParaColonias;
+import br.com.jequiti.dominio.filtro.comparadores.ComparadorParaProdutosMasculinos;
 
 public class Principal {
 
@@ -23,13 +26,10 @@ public class Principal {
 		
 		List<Produto> produtos = Arrays.asList(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10);
 		
+		FiltroDeProdutos filtro = new FiltroDeProdutos();
+		
 		// Presentes para amigo secreto (mais de R$ 50)
-		List<Produto> amigoSecreto = new ArrayList<>();
-		for (Produto p : produtos) {
-			if (p.getPreco() > 50) {
-				amigoSecreto.add(p);
-			}
-		}
+		List<Produto> amigoSecreto = filtro.filtra(produtos, new ComparadorParaAmigoSecreto());
 		for (Produto p : amigoSecreto) {
 			System.out.println(p);
 		}
@@ -37,12 +37,7 @@ public class Principal {
 		System.out.println("-----------------------------------------------------------------");
 
 		// Colônias
-		List<Produto> colonias = new ArrayList<>();
-		for (Produto p : produtos) {
-			if (p.getNome().startsWith("COLONIA")) {
-				colonias.add(p);
-			}
-		}
+		List<Produto> colonias = filtro.filtra(produtos, new ComparadorParaColonias());
 		for (Produto p : colonias) {
 			System.out.println(p);
 		}
@@ -50,12 +45,7 @@ public class Principal {
 		System.out.println("-----------------------------------------------------------------");
 
 		// Produtos Masculinos
-		List<Produto> masculinos = new ArrayList<>();
-		for (Produto p : produtos) {
-			if (p.getNome().contains("MASCULIN")) {
-				masculinos.add(p);
-			}
-		}
+		List<Produto> masculinos = filtro.filtra(produtos, new ComparadorParaProdutosMasculinos());
 		for (Produto p : masculinos) {
 			System.out.println(p);
 		}
