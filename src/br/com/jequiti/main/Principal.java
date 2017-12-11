@@ -2,6 +2,7 @@ package br.com.jequiti.main;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import br.com.jequiti.dominio.Produto;
 
@@ -43,10 +44,10 @@ public class Principal {
 
 		System.out.println("-----------------------------------------------------------------");
 		
-		double somaDosPrecos = produtos.stream()
+		Optional<Double> somaDosPrecos = produtos.stream()
 			.map(p -> p.getPreco())
-			.reduce(0.0, (total, preco) -> total + preco);
-		System.out.println(somaDosPrecos);
+			.reduce(Double::sum);
+		somaDosPrecos.ifPresent(System.out::println);
 	}
 
 }
