@@ -42,6 +42,10 @@ public class Principal {
 		.forEach(System.out::println);
 
 		System.out.println("-----------------------------------------------------------------");
+		
+		produtos.stream()
+			.map(p -> p.getPreco())
+			.forEach(System.out::println);
 	}
 
 }
