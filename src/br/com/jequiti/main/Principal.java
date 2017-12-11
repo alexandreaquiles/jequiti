@@ -25,21 +25,21 @@ public class Principal {
 		// Presentes para amigo secreto (mais de R$ 50)
 		produtos.stream()
 			.filter(p -> p.getPreco() > 50)
-			.forEach(p -> System.out.println(p));
+			.forEach(System.out::println);
 
 		System.out.println("-----------------------------------------------------------------");
 
 		// Colônias
 		produtos.stream()
 			.filter(p -> p.getNome().startsWith("COLONIA"))
-			.forEach(p -> System.out.println(p));
+			.forEach(System.out::println);
 
 		System.out.println("-----------------------------------------------------------------");
 
 		// Produtos Masculinos
 		produtos.stream()
 		.filter(p -> p.getNome().contains("MASCULIN"))
-		.forEach(p -> System.out.println(p));
+		.forEach(System.out::println);
 
 		System.out.println("-----------------------------------------------------------------");
 	}
