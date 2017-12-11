@@ -1,6 +1,7 @@
 package br.com.jequiti.main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import br.com.jequiti.dominio.Produto;
@@ -20,17 +21,7 @@ public class Principal {
 		Produto p9 = new Produto("COLONIA DESODORANTE FEMININA ISABELLA FIORENTINO BELLA", 19.9);
 		Produto p10 = new Produto("ESTOJO ELIANA CRISTAL", 129.9);
 		
-		List<Produto> produtos = new ArrayList<>();
-		produtos.add(p1);
-		produtos.add(p2);
-		produtos.add(p3);
-		produtos.add(p4);
-		produtos.add(p5);
-		produtos.add(p6);
-		produtos.add(p7);
-		produtos.add(p8);
-		produtos.add(p9);
-		produtos.add(p10);
+		List<Produto> produtos = Arrays.asList(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10);
 		
 		// Presentes para amigo secreto (mais de R$ 50)
 		List<Produto> amigoSecreto = new ArrayList<>();
