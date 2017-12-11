@@ -43,9 +43,10 @@ public class Principal {
 
 		System.out.println("-----------------------------------------------------------------");
 		
-		produtos.stream()
+		double somaDosPrecos = produtos.stream()
 			.map(p -> p.getPreco())
-			.forEach(System.out::println);
+			.reduce(0.0, (total, preco) -> total + preco);
+		System.out.println(somaDosPrecos);
 	}
 
 }
