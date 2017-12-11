@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import br.com.jequiti.dominio.Produto;
-import br.com.jequiti.dominio.filtro.ComparadorProdutos;
-import br.com.jequiti.dominio.filtro.FiltroDeProdutos;
 
 public class Principal {
 
@@ -24,29 +22,24 @@ public class Principal {
 
 		List<Produto> produtos = Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10);
 
-		FiltroDeProdutos filtro = new FiltroDeProdutos();
-
 		// Presentes para amigo secreto (mais de R$ 50)
-		List<Produto> amigoSecreto = filtro.filtra(produtos, p -> p.getPreco() > 50);
-		for (Produto p : amigoSecreto) {
-			System.out.println(p);
-		}
+		produtos.stream()
+			.filter(p -> p.getPreco() > 50)
+			.forEach(p -> System.out.println(p));
 
 		System.out.println("-----------------------------------------------------------------");
 
 		// Colônias
-		List<Produto> colonias = filtro.filtra(produtos, p -> p.getNome().startsWith("COLONIA"));
-		for (Produto p : colonias) {
-			System.out.println(p);
-		}
+		produtos.stream()
+			.filter(p -> p.getNome().startsWith("COLONIA"))
+			.forEach(p -> System.out.println(p));
 
 		System.out.println("-----------------------------------------------------------------");
 
 		// Produtos Masculinos
-		List<Produto> masculinos = filtro.filtra(produtos, p -> p.getNome().contains("MASCULIN"));
-		for (Produto p : masculinos) {
-			System.out.println(p);
-		}
+		produtos.stream()
+		.filter(p -> p.getNome().contains("MASCULIN"))
+		.forEach(p -> System.out.println(p));
 
 		System.out.println("-----------------------------------------------------------------");
 	}
