@@ -27,7 +27,7 @@ public class Principal {
 		FiltroDeProdutos filtro = new FiltroDeProdutos();
 
 		// Presentes para amigo secreto (mais de R$ 50)
-		List<Produto> amigoSecreto = filtro.filtra(produtos, (Produto p) -> {
+		List<Produto> amigoSecreto = filtro.filtra(produtos, p -> {
 			return p.getPreco() > 50;
 		});
 		for (Produto p : amigoSecreto) {
@@ -37,7 +37,7 @@ public class Principal {
 		System.out.println("-----------------------------------------------------------------");
 
 		// Colônias
-		List<Produto> colonias = filtro.filtra(produtos, (Produto p) -> {
+		List<Produto> colonias = filtro.filtra(produtos, p -> {
 			return p.getNome().startsWith("COLONIA");
 		});
 		for (Produto p : colonias) {
@@ -47,7 +47,7 @@ public class Principal {
 		System.out.println("-----------------------------------------------------------------");
 
 		// Produtos Masculinos
-		List<Produto> masculinos = filtro.filtra(produtos, (Produto p) -> {
+		List<Produto> masculinos = filtro.filtra(produtos, p -> {
 			return p.getNome().contains("MASCULIN");
 		});
 		for (Produto p : masculinos) {
